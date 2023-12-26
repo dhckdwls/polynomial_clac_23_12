@@ -42,4 +42,17 @@ public class CalcTest {
   void t6() {
     assertThat(Calc.run("50 - 30")).isEqualTo(20);
   }
+
+  @Test
+  @DisplayName("50 * 30 == 1500")
+  void t7() {
+    assertThat(Calc.run("50 * 30")).isEqualTo(1500);
+  }
+
+  @Test
+  @DisplayName("40 / 20 == 2")
+  void t8() {
+    assertThat(Calc.run("40 / 20")).isEqualTo(2);
+  }
+
 }
