@@ -27,7 +27,7 @@ public class Calc {
 
     }
     else if (exp.contains(" * ")) {
-      String[] bits = exp.split(" * ");
+      String[] bits = exp.split(" \\* ");
 
       int a = Integer.parseInt(bits[0]);
       int b = Integer.parseInt(bits[1]);
