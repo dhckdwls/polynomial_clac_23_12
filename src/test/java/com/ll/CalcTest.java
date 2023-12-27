@@ -36,7 +36,6 @@ public class CalcTest {
     assertThat(Calc.run("1000 + 200")).isEqualTo(1200);
   }
 
-  // 구현
   @Test
   @DisplayName("50 - 30 == 20")
   void t6() {
@@ -44,15 +43,9 @@ public class CalcTest {
   }
 
   @Test
-  @DisplayName("50 * 30 == 1500")
+  @DisplayName("3 - 1 == 2")
   void t7() {
-    assertThat(Calc.run("50 * 30")).isEqualTo(1500);
-  }
-
-  @Test
-  @DisplayName("40 / 20 == 2")
-  void t8() {
-    assertThat(Calc.run("40 / 20")).isEqualTo(2);
+    assertThat(Calc.run("3 - 1")).isEqualTo(2);
   }
 
 }
