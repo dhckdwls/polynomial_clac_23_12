@@ -51,7 +51,7 @@ public class Calc {
     } else if (needToCompound) {
       String[] bits = exp.split(" \\+ ");
 
-      return Integer.parseInt(bits[0]) + Calc.run(bits[1]); // TODO
+      return Calc.run(bits[0]) + Calc.run(bits[1]); // TODO
     }
     if (needToPlus) {
       exp = exp.replaceAll("\\- ", "\\+ \\-");

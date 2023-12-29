@@ -197,4 +197,10 @@ public class CalcTest {
   void t32() {
     assertThat(Calc.run("(1 + 5) - (1 + 5)")).isEqualTo(0);
   }
+
+  @Test
+  @DisplayName("1 * 2 + 3 == 5")
+  void t33() {
+    assertThat(Calc.run("1 * 2 + 3")).isEqualTo(5);
+  }
 }
