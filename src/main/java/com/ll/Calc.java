@@ -6,7 +6,7 @@ public class Calc {
 
   public static int runCallCount = 0;
 
-  public static int run(String exp) { // -(10 + 5)
+  public static int run(String exp) { // 5 - (1 + 5)
     runCallCount++;
 
     exp = exp.trim();
@@ -31,9 +31,13 @@ public class Calc {
     boolean needToCompound = needToMultiply && needToPlus;
     boolean needToSplit = exp.contains("(") || exp.contains(")");
 
-    if (needToSplit) {  // -(10 + 5)
+    if (needToSplit) {  // 5 - (1 + 5)
 
       int splitPointIndex = findSplitPointIndex(exp);
+      if(splitPointIndex == -1){
+        exp = exp.replaceAll("\\- ", "\\+ \\-");
+        splitPointIndex = findSplitPointIndex(exp);
+      }
 
       String firstExp = exp.substring(0, splitPointIndex);
       String secondExp = exp.substring(splitPointIndex + 1);
