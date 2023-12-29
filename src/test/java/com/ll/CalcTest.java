@@ -193,9 +193,9 @@ public class CalcTest {
   }
 
   @Test
-  @DisplayName("(1 + 5) - (1 + 5) == 0")
+  @DisplayName("3 * 1 + (1 - (4 * 1 - (1 - 1))) == 0")
   void t32() {
-    assertThat(Calc.run("(1 + 5) - (1 + 5)")).isEqualTo(0);
+    assertThat(Calc.run("3 * 1 + (1 - (4 * 1 - (1 - 1)))")).isEqualTo(0);
   }
 
   @Test

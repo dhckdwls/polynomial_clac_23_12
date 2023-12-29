@@ -6,7 +6,7 @@ public class Calc {
 
   public static int runCallCount = 0;
 
-  public static int run(String exp) { // 5 - (1 + 5)
+  public static int run(String exp) { // -(8 + 2) * -(7 + 3) + 5
     runCallCount++;
 
     exp = exp.trim();
@@ -18,7 +18,9 @@ public class Calc {
       exp = changeNegativeBracket(exp, pos[0], pos[1]);
     }
     exp = stripOuterBracket(exp);
+
     if (recursionDebug) {
+
       System.out.printf("exp(%d) : %s\n", runCallCount, exp);
     }
 
@@ -31,13 +33,9 @@ public class Calc {
     boolean needToCompound = needToMultiply && needToPlus;
     boolean needToSplit = exp.contains("(") || exp.contains(")");
 
-    if (needToSplit) {  // 5 - (1 + 5)
-
+    if (needToSplit) {
+      exp = exp.replaceAll("- ", "\\+ -");
       int splitPointIndex = findSplitPointIndex(exp);
-      if(splitPointIndex == -1){
-        exp = exp.replaceAll("\\- ", "\\+ \\-");
-        splitPointIndex = findSplitPointIndex(exp);
-      }
 
       String firstExp = exp.substring(0, splitPointIndex);
       String secondExp = exp.substring(splitPointIndex + 1);
@@ -51,7 +49,7 @@ public class Calc {
     } else if (needToCompound) {
       String[] bits = exp.split(" \\+ ");
 
-      return Calc.run(bits[0]) + Calc.run(bits[1]); // TODO
+      return Integer.parseInt(bits[0]) + Calc.run(bits[1]);
     }
     if (needToPlus) {
       exp = exp.replaceAll("\\- ", "\\+ \\-");
